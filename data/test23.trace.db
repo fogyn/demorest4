@@ -1,0 +1,8 @@
+2021-01-10 19:58:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ORDER_" не найдена
+Table "ORDER_" not found; SQL statement:
+select order_0_.order_id as order_id1_0_, order_0_.address as address2_0_, order_0_.client as client3_0_, order_0_.date as date4_0_ from order_ order_0_ [42102-200]
+2021-01-10 19:58:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ORDER_" не найдена
+Table "ORDER_" not found; SQL statement:
+select order_0_.order_id as order_id1_0_, order_0_.address as address2_0_, order_0_.client as client3_0_, order_0_.date as date4_0_ from order_ order_0_ [42102-200]

@@ -1,0 +1,74 @@
+2021-01-05 14:06:25 jdbc[3]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:100)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:187)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+
+org.h2.message.DbException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 16 more
+2021-01-05 14:10:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CRESTE[*] TABLE ORDER_ (ORDER_ID INT NOT NULL AUTO_INCREMENT, CLIENT VARCHAR(200) NOT NULL CHECK(CLIENT !=' ' OR CLIENT!=''), DATE DATE NOT NULL, ADDRESS VARCHAR(200) NOT NULL CHECK(ADDRESS!=' ' OR ADDRESS!=''), PRIMARY KEY(ORDER_ID))"; ожидалось "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"
+Syntax error in SQL statement "CRESTE[*] TABLE ORDER_ (ORDER_ID INT NOT NULL AUTO_INCREMENT, CLIENT VARCHAR(200) NOT NULL CHECK(CLIENT !=' ' OR CLIENT!=''), DATE DATE NOT NULL, ADDRESS VARCHAR(200) NOT NULL CHECK(ADDRESS!=' ' OR ADDRESS!=''), PRIMARY KEY(ORDER_ID))"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+creste table order_ (order_id int not null auto_increment, client varchar(200) not null check(client !=' ' or client!=''), date DATE not null, address varchar(200) not null check(address!=' ' or address!=''), primary key(order_id)) [42001-200]
+2021-01-07 22:58:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID) )"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID) )"; expected ")"; SQL statement:
+create table goods (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price double(10,2) not null check(price>0), primary key(good_id) ) [42001-200]
+2021-01-07 23:00:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS1 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS1 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods1 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price double(10,2) not null check(price>0), primary key(good_id)) [42001-200]
+2021-01-07 23:01:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS2 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS2 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods2 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price double(10,2) not null check(price>0), primary key(good_id)) [42001-200]
+2021-01-07 23:03:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS2 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL, PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS2 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL, PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods2 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price double(10,2) not null, primary key(good_id)) [42001-200]
+2021-01-07 23:05:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE  DOUBLE(10,[*] 2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE  DOUBLE(10,[*] 2) NOT NULL CHECK(PRICE>0), PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods4 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price  double(10, 2) not null check(price>0), primary key(good_id)) [42001-200]
+2021-01-07 23:06:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE  DOUBLE(10,[*] 2) NOT NULL CHECK(PRICE>0.0), PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE  DOUBLE(10,[*] 2) NOT NULL CHECK(PRICE>0.0), PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods4 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price  double(10, 2) not null check(price>0.0), primary key(good_id)) [42001-200]
+2021-01-07 23:06:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE  DOUBLE(10. 2[*]) NOT NULL CHECK(PRICE>0.0), PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE  DOUBLE(10. 2[*]) NOT NULL CHECK(PRICE>0.0), PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods4 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price  double(10. 2) not null check(price>0.0), primary key(good_id)) [42001-200]
+2021-01-07 23:06:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0.0), PRIMARY KEY(GOOD_ID))"; ожидалось ")"
+Syntax error in SQL statement "CREATE TABLE GOODS4 (GOOD_ID INT AUTO_INCREMENT NOT NULL, NAME VARCHAR(200) NOT NULL CHECK(NAME!=' ' OR NAME!=''), PRICE DOUBLE(10,[*]2) NOT NULL CHECK(PRICE>0.0), PRIMARY KEY(GOOD_ID))"; expected ")"; SQL statement:
+create table goods4 (good_id int auto_increment not null, name varchar(200) not null check(name!=' ' or name!=''), price double(10,2) not null check(price>0.0), primary key(good_id)) [42001-200]

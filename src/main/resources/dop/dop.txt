@@ -1,0 +1,3 @@
+//spring.datasource.url=jdbc:h2:mem:db21
+//spring.datasource.url=jdbc:h2:file:/D:/Java/Projects/demorest4/src/main/resources/db/test23;AUTO_SERVER=true
+jdbc:h2:file:~/src
