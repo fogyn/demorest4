@@ -4,6 +4,7 @@ import com.demo21.demorest4.entity.*;
 import com.demo21.demorest4.service.ServiseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.Optional;
 //@CrossOrigin
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
+@RequestMapping
 public class MainController {
     public int num = 0;
    @Autowired
@@ -94,16 +96,14 @@ public class MainController {
         return ResponseEntity.ok("good number "+id+" was update successfully");
     }
     // добавление новой записи
+
     @CrossOrigin("http://localhost:4200")
-    //@PostMapping(value = "/newgood")
-    @RequestMapping(value = "/newgood", method=RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public String postGood(@RequestBody Good g){
+    @RequestMapping(value = "/newgood", method = RequestMethod.POST, consumes="application/json")
+    public ResponseEntity<Object> postGood(@RequestBody Good g){
         System.out.println("Good post Task about new good   - !");
-        System.out.println(g.getGoodid()+" - "+g.getName() + " - "+ g.getName());
+        System.out.println(g.getGoodid()+" - "+g.getName() + " - "+ g.getPrice());
         //servis.newGood(g);
-        return "Created ok!";
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 
