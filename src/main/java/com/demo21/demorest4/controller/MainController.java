@@ -99,7 +99,7 @@ public class MainController {
     @RequestMapping(value = "/newgood", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public String postGood(Good g){
+    public String postGood(@RequestBody Good g){
         System.out.println("Good post Task about new good   - !");
         System.out.println(g.getGoodid()+" - "+g.getName() + " - "+ g.getName());
         //servis.newGood(g);
