@@ -1,12 +1,14 @@
 package com.demo21.demorest4.controller;
+
 import com.demo21.demorest4.entity.*;
 import com.demo21.demorest4.service.ServiseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 
@@ -93,24 +95,16 @@ public class MainController {
     }
     // добавление новой записи
     @CrossOrigin("http://localhost:4200")
-    @PostMapping("/newgood")
-    public ResponseEntity postGood(@RequestBody Good input){
-        System.out.println("Good post Task about new good   - ");
-        //servis.newGood(newgood);
-        return ResponseEntity.ok(new Good(-1,"test ok", -1));
+    //@PostMapping(value = "/newgood")
+    @RequestMapping(value = "/newgood", method=RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public String postGood(Good g){
+        System.out.println("Good post Task about new good   - !");
+        System.out.println(g.getGoodid()+" - "+g.getName() + " - "+ g.getName());
+        //servis.newGood(g);
+        return "Created ok!";
     }
 
-//    @CrossOrigin("http://localhost:4200")
-//    @GetMapping("/basaorderlines")
-//    public ResponseEntity getBasaOrderLines(){
-//        System.out.println("Good get Task about base");
-//        List<Order_Line> ar_lines = servis.getAllOrders();
-//        System.out.println("-------------------------------------------------------------------");
-//        for(Order_Line line:ar_lines){
-//            System.out.println(line.getId()+" - "+line.getOrder_id()+" - "+line.getGood_id()+" - "+line.getCount());
-//            System.out.println("-------------------------------------------------------------------");
-//        }
-//        return ResponseEntity.ok(ar_lines);
-//    }
 
 }
